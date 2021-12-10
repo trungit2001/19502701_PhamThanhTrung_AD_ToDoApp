@@ -6,4 +6,6 @@
     <string name="txtAddTask">Add New Task</string>
     <string name="txtSave">Save</string>
     <string name="txtCancel">Cancel</string>
+    <string name="etAddTask">""</string>
+    <string name="placeholder">new task</string>
 </resources>
