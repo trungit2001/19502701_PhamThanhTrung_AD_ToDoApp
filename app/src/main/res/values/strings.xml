@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">19502701_PhamThanhTrung_AD_ToDoApp</string>
+    <string name="txtFabDesc">add to do</string>
+    <string name="txtTask">Task</string>
+    <string name="txtStatus">status</string>
+    <string name="txtAddTask">Add New Task</string>
+    <string name="txtSave">Save</string>
+    <string name="txtCancel">Cancel</string>
+</resources>

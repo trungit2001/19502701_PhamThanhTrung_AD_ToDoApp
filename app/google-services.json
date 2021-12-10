@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "706805917790",
+    "firebase_url": "https://todoapp-appdev-default-rtdb.asia-southeast1.firebasedatabase.app",
+    "project_id": "todoapp-appdev",
+    "storage_bucket": "todoapp-appdev.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:706805917790:android:5f1354eba6657ea0b9accf",
+        "android_client_info": {
+          "package_name": "com.trungit.a19502701_phamthanhtrung_ad_todoapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "706805917790-itmfn0osbmtrg61d0pl3roi7me4iutbn.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAbZ0a-J9S1rDYByGtLY9YmFwiyZkDdpGA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "706805917790-itmfn0osbmtrg61d0pl3roi7me4iutbn.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
