@@ -38,7 +38,7 @@ class AddTaskDialog: DialogFragment() {
             addItemListener = context as DialogAddItemListener
         } catch (e: ClassCastException) {
             throw ClassCastException((context.toString() +
-                    "must implement NoticeDialogListener"))
+                    " must implement NoticeDialogListener"))
         }
     }
 }

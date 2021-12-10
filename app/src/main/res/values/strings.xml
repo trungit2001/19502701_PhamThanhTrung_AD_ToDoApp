@@ -2,10 +2,14 @@
     <string name="app_name">19502701_PhamThanhTrung_AD_ToDoApp</string>
     <string name="txtFabDesc">add to do</string>
     <string name="txtTask">Task</string>
-    <string name="txtStatus">status</string>
+    <string name="txtStatus">Not Completed</string>
+    <string name="txtStatusCompleted">Completed</string>
     <string name="txtAddTask">Add New Task</string>
     <string name="txtSave">Save</string>
     <string name="txtCancel">Cancel</string>
     <string name="etAddTask">""</string>
     <string name="placeholder">new task</string>
+    <string name="btnCheck">btnCheck</string>
+    <string name="btnDelete">delete</string>
+    <string name="btnEdit">edit</string>
 </resources>

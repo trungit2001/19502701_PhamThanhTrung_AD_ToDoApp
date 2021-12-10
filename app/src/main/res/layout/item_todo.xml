@@ -7,7 +7,7 @@
     android:orientation="horizontal">
 
     <TextView
-        android:layout_weight="1"
+        android:layout_weight="1.1"
         android:id="@+id/tvTask"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -18,12 +18,10 @@
         android:textColor="@color/black"/>
 
     <TextView
-        android:layout_weight="2"
+        android:layout_weight="1.9"
         android:id="@+id/tvStatus"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:ellipsize="end"
-        android:ems="15"
         android:textSize="20sp"
         android:textColor="@color/red"
         android:text="@string/txtStatus" />
