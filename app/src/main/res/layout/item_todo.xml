@@ -1,28 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/taskItem"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:weightSum="3"
+    android:orientation="horizontal"
     android:padding="16dp"
-    android:orientation="horizontal">
+    android:weightSum="3">
 
     <TextView
-        android:layout_weight="1.1"
         android:id="@+id/tvTask"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/txtTask"
+        android:layout_weight="1.1"
         android:ellipsize="end"
-        android:ems="15"
-        android:textSize="20sp"
-        android:textColor="@color/black"/>
+        android:ems="10"
+        android:text="@string/txtTask"
+        android:textColor="@color/black"
+        android:textSize="20sp" />
 
     <TextView
-        android:layout_weight="1.9"
         android:id="@+id/tvStatus"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textSize="20sp"
+        android:layout_weight="1.9"
+        android:text="@string/txtStatusNotCompleted"
         android:textColor="@color/red"
-        android:text="@string/txtStatusNotCompleted" />
+        android:textSize="20sp" />
 </LinearLayout>
