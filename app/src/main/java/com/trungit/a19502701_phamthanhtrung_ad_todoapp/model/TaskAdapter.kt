@@ -1,17 +1,19 @@
 package com.trungit.a19502701_phamthanhtrung_ad_todoapp.model
 
 import android.annotation.SuppressLint
-import android.graphics.Color
+import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.LinearLayout
 import android.widget.TextView
+import androidx.core.content.ContextCompat.getColor
 import androidx.recyclerview.widget.RecyclerView
 import com.trungit.a19502701_phamthanhtrung_ad_todoapp.R
 import com.trungit.a19502701_phamthanhtrung_ad_todoapp.util.Utilities.getStatus
 
 class TaskAdapter(
+    private val context: Context,
     private val toDoList: MutableList<ToDo>
 ): RecyclerView.Adapter<TaskAdapter.TaskViewHolder>() {
     private var rowIndex = -1
@@ -38,14 +40,25 @@ class TaskAdapter(
         val status: Boolean = toDoList[position].task!!.status
 
         holder.status.text = getStatus(status)
-        holder.status.setTextColor(if (status) Color.GREEN else Color.RED)
+        holder.status.setTextColor(
+            if (status) getColor(context, R.color.green)
+            else getColor(context, R.color.red)
+        )
 
         if (rowIndex == position) {
-            holder.taskItemLayout.setBackgroundColor(Color.parseColor("#FFBB86FC"))
-            holder.desc.setTextColor(Color.parseColor("#FFFFFF"))
+            holder.taskItemLayout.setBackgroundColor(
+                getColor(context, R.color.purple_200)
+            )
+            holder.desc.setTextColor(
+                getColor(context, R.color.white)
+            )
         } else {
-            holder.taskItemLayout.setBackgroundColor(Color.parseColor("#FFFFFF"))
-            holder.desc.setTextColor(Color.parseColor("#000000"))
+            holder.taskItemLayout.setBackgroundColor(
+                getColor(context, R.color.white)
+            )
+            holder.desc.setTextColor(
+                getColor(context, R.color.black)
+            )
         }
 
         holder.taskItemLayout.setOnClickListener {
@@ -57,4 +70,6 @@ class TaskAdapter(
     override fun getItemCount(): Int {
         return toDoList.size
     }
+
+
 }
