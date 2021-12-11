@@ -1,10 +1,11 @@
-package com.trungit.a19502701_phamthanhtrung_ad_todoapp
+package com.trungit.a19502701_phamthanhtrung_ad_todoapp.fragment
 
 import android.app.AlertDialog
 import android.app.Dialog
 import android.content.Context
 import android.os.Bundle
 import androidx.fragment.app.DialogFragment
+import com.trungit.a19502701_phamthanhtrung_ad_todoapp.R
 
 class AddTaskDialog: DialogFragment() {
     private lateinit var addItemListener: DialogAddItemListener
@@ -20,16 +21,19 @@ class AddTaskDialog: DialogFragment() {
 
             builder.setTitle(R.string.txtAddTask)
                 .setView(R.layout.add_task_dialog)
-                .setPositiveButton(R.string.txtSave
+                .setPositiveButton(
+                    R.string.txtBtnSave
                 ) { _, _ ->
                     addItemListener.onDialogPositiveClick(this)
                 }
-                .setNegativeButton(R.string.txtCancel
+                .setNegativeButton(
+                    R.string.txtBtnCancel
                 ) { _, _ ->
                     addItemListener.onDialogNegativeClick(this)
                 }
             builder.create()
         } ?: throw IllegalStateException("Activity cannot be null")
+
     }
 
     override fun onAttach(context: Context) {
