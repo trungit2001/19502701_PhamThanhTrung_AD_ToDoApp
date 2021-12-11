@@ -14,7 +14,7 @@ import com.trungit.a19502701_phamthanhtrung_ad_todoapp.util.Utilities.getStatus
 class TaskAdapter(
     private val toDoList: MutableList<ToDo>
 ): RecyclerView.Adapter<TaskAdapter.TaskViewHolder>() {
-    var rowIndex = -1
+    private var rowIndex = -1
 
     interface UpdateAndDelete {
         fun modifyItem(itemUID: String, isDone: Boolean)
@@ -24,7 +24,7 @@ class TaskAdapter(
     class TaskViewHolder(itemView: View): RecyclerView.ViewHolder(itemView) {
         val desc: TextView = itemView.findViewById(R.id.tvTask)
         val status: TextView = itemView.findViewById(R.id.tvStatus)
-        val taskItem: LinearLayout = itemView.findViewById(R.id.taskItem)
+        val taskItemLayout: LinearLayout = itemView.findViewById(R.id.taskItem)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TaskViewHolder {
@@ -40,18 +40,18 @@ class TaskAdapter(
         holder.status.text = getStatus(status)
         holder.status.setTextColor(if (status) Color.GREEN else Color.RED)
 
-//        if (rowIndex == position) {
-//            holder.taskItem.setBackgroundColor(Color.parseColor("#FFBB86FC"))
-//            holder.desc.setTextColor(Color.parseColor("#FFFFFF"))
-//        } else {
-//            holder.taskItem.setBackgroundColor(Color.parseColor("#FFFFFF"))
-//            holder.desc.setTextColor(Color.parseColor("#000000"))
-//        }
-//
-//        holder.taskItem.setOnClickListener {
-//            rowIndex = position
-//            notifyDataSetChanged()
-//        }
+        if (rowIndex == position) {
+            holder.taskItemLayout.setBackgroundColor(Color.parseColor("#FFBB86FC"))
+            holder.desc.setTextColor(Color.parseColor("#FFFFFF"))
+        } else {
+            holder.taskItemLayout.setBackgroundColor(Color.parseColor("#FFFFFF"))
+            holder.desc.setTextColor(Color.parseColor("#000000"))
+        }
+
+        holder.taskItemLayout.setOnClickListener {
+            rowIndex = holder.adapterPosition
+            notifyDataSetChanged()
+        }
     }
 
     override fun getItemCount(): Int {
