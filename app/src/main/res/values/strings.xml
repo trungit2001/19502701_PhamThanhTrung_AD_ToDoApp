@@ -5,16 +5,19 @@
     <string name="txtStatusNotCompleted">Not Completed</string>
     <string name="txtStatusCompleted">Completed</string>
     <string name="txtAddTask">Add New Task</string>
+    <string name="txtEditTask">Edit Your Task</string>
     <string name="txtBtnSave">Save</string>
     <string name="txtBtnCancel">Cancel</string>
     <string name="etAddTask">""</string>
     <string name="placeholder">input your task</string>
-    <string name="btnCheck">btnCheck</string>
-    <string name="btnDelete">delete</string>
-    <string name="btnEdit">edit</string>
+    <string name="btnCheck">btn Check</string>
+    <string name="btnDelete">btn Delete</string>
+    <string name="btnEdit">btn Edit</string>
     <string name="txtSaveSuccess">Save success!</string>
     <string name="txtSaveEmpty">Nothing to save!</string>
     <string name="txtSaveFailure">Save failure!</string>
     <string name="txtCancel">Cancel!</string>
     <string name="txtGetToDoListFailure">Cannot get task list!</string>
+    <string name="txtSkeleton">No task to do</string>
+    <string name="placeholder_edit_task">edit your task</string>
 </resources>

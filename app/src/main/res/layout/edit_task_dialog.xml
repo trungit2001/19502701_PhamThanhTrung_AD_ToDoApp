@@ -3,7 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    tools:context=".fragment.EditTaskDialog">
 
     <EditText
         android:id="@+id/etTask"
@@ -12,7 +13,7 @@
         android:layout_marginStart="24dp"
         android:layout_marginEnd="24dp"
         android:ems="10"
-        android:hint="@string/placeholder"
+        android:hint="@string/placeholder_edit_task"
         android:importantForAutofill="no"
         android:inputType="text"
         android:minHeight="48dp"

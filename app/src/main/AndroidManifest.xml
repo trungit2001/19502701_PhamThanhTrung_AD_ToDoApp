@@ -10,6 +10,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.19502701_PhamThanhTrung_AD_ToDoApp">
         <activity
+            android:name=".fragment.EditTaskDialog"
+            android:exported="false" />
+        <activity
             android:name=".MainActivity"
             android:exported="true">
             <intent-filter>

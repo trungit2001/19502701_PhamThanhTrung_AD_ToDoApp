@@ -8,7 +8,7 @@ import androidx.fragment.app.DialogFragment
 import com.trungit.a19502701_phamthanhtrung_ad_todoapp.R
 
 class AddTaskDialog: DialogFragment() {
-    private lateinit var addItemListener: DialogAddItemListener
+    private lateinit var listener: DialogAddItemListener
 
     interface DialogAddItemListener {
         fun onDialogPositiveClick(dialog: DialogFragment)
@@ -24,12 +24,12 @@ class AddTaskDialog: DialogFragment() {
                 .setPositiveButton(
                     R.string.txtBtnSave
                 ) { _, _ ->
-                    addItemListener.onDialogPositiveClick(this)
+                    listener.onDialogPositiveClick(this)
                 }
                 .setNegativeButton(
                     R.string.txtBtnCancel
                 ) { _, _ ->
-                    addItemListener.onDialogNegativeClick(this)
+                    listener.onDialogNegativeClick(this)
                 }
             builder.create()
         } ?: throw IllegalStateException("Activity cannot be null")
@@ -39,7 +39,7 @@ class AddTaskDialog: DialogFragment() {
     override fun onAttach(context: Context) {
         super.onAttach(context)
         try {
-            addItemListener = context as DialogAddItemListener
+            listener = context as DialogAddItemListener
         } catch (e: ClassCastException) {
             throw ClassCastException((context.toString() +
                     " must implement NoticeDialogListener"))
