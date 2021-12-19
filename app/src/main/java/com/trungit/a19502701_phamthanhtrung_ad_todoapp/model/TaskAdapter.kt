@@ -1,6 +1,5 @@
 package com.trungit.a19502701_phamthanhtrung_ad_todoapp.model
 
-import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -8,19 +7,22 @@ import android.widget.BaseAdapter
 import android.widget.Button
 import android.widget.TextView
 import androidx.core.content.ContextCompat.getColor
+import com.trungit.a19502701_phamthanhtrung_ad_todoapp.MainActivity
 import com.trungit.a19502701_phamthanhtrung_ad_todoapp.R
 import com.trungit.a19502701_phamthanhtrung_ad_todoapp.util.Utilities.getStatus
+import com.trungit.a19502701_phamthanhtrung_ad_todoapp.util.Utilities.onSnack
 
 class TaskAdapter(
-    private val context: Context,
+    private val mainActivity: MainActivity,
     private val toDoList: MutableList<ToDo>
-): BaseAdapter() {
-    private val update = context as UpdateAndDelete
+): BaseAdapter(){
+    private val update = mainActivity as UpdateAndDelete
 
     interface UpdateAndDelete {
-        fun modifyItem(itemUID: String, isDone: Boolean)
-        fun onItemDelete(itemUID: String)
-        fun editItem(itemUID: String, oldText: String)
+        fun onStatusClick(itemUID: String, isDone: Boolean)
+        fun onDeleteTaskClick(itemUID: String)
+        fun onEditTaskClick(itemUID: String)
+        fun onDeadLineClick(itemUID: String)
     }
 
     override fun getCount(): Int {
@@ -39,6 +41,7 @@ class TaskAdapter(
         val itemUID = toDoList[position].itemUID!!
         val descTask = toDoList[position].task!!.descTask
         val status = toDoList[position].task!!.status
+        val dateString = toDoList[position].task!!.dateString
         val view: View
         val viewHolder: TaskViewHolder
 
@@ -56,22 +59,32 @@ class TaskAdapter(
 
         // set text for list view to do
         viewHolder.descTask.text = descTask
-        viewHolder.tvStatus.text = getStatus(context, status)
+        viewHolder.tvDate.text = dateString
+        viewHolder.tvStatus.text = getStatus(mainActivity, status)
         viewHolder.tvStatus.setTextColor(
-            if (status) getColor(context, R.color.green)
-            else getColor(context, R.color.red)
+            if (status) getColor(mainActivity, R.color.green)
+            else getColor(mainActivity, R.color.red)
         )
 
         viewHolder.descTask.setOnClickListener {
-            update.editItem(itemUID, viewHolder.descTask.text.toString())
+            update.onEditTaskClick(itemUID)
         }
 
         viewHolder.tvStatus.setOnClickListener {
-            update.modifyItem(itemUID, !status)
+            update.onStatusClick(itemUID, !status)
+            if (!status) {
+                onSnack(it, mainActivity.getString(R.string.markCompleted))
+            } else {
+                onSnack(it, mainActivity.getString(R.string.markNotCompleted))
+            }
+        }
+
+        viewHolder.tvDate.setOnClickListener {
+            update.onDeadLineClick(itemUID)
         }
 
         viewHolder.btnDelete.setOnClickListener {
-            update.onItemDelete(itemUID)
+            update.onDeleteTaskClick(itemUID)
         }
 
         return view
@@ -80,7 +93,7 @@ class TaskAdapter(
     class TaskViewHolder(itemView: View) {
         val descTask: TextView = itemView.findViewById(R.id.tvTask)
         val tvStatus: TextView = itemView.findViewById(R.id.tvStatus)
+        val tvDate: TextView = itemView.findViewById(R.id.tvDate)
         val btnDelete: Button = itemView.findViewById(R.id.btnDelete)
     }
-
 }

@@ -7,7 +7,7 @@
     tools:context=".fragment.EditTaskDialog">
 
     <EditText
-        android:id="@+id/etTask"
+        android:id="@+id/etEditTask"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"

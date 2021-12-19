@@ -9,15 +9,21 @@
     <string name="txtBtnSave">Save</string>
     <string name="txtBtnCancel">Cancel</string>
     <string name="etAddTask">""</string>
-    <string name="placeholder">input your task</string>
+    <string name="placeholder">Input your task</string>
     <string name="btnCheck">btn Check</string>
     <string name="btnDelete">btn Delete</string>
     <string name="btnEdit">btn Edit</string>
     <string name="txtSaveSuccess">Save success!</string>
-    <string name="txtSaveEmpty">Nothing to save!</string>
+    <string name="txtSaveEmpty">Input your task first!</string>
     <string name="txtSaveFailure">Save failure!</string>
     <string name="txtCancel">Cancel!</string>
     <string name="txtGetToDoListFailure">Cannot get task list!</string>
     <string name="txtSkeleton">No task to do</string>
-    <string name="placeholder_edit_task">edit your task</string>
+    <string name="placeholder_edit_task">Input your edit task</string>
+    <string name="datePlaceHolder">--/--/----</string>
+    <string name="setDate">Set deadline</string>
+    <string name="txtDeadline">Deadline:</string>
+    <string name="setTimeError">Cannot set time before now</string>
+    <string name="markCompleted">Task has been marked as completed</string>
+    <string name="markNotCompleted">Task has been marked as not completed</string>
 </resources>

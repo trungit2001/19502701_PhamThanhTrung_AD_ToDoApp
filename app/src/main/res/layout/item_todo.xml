@@ -14,28 +14,42 @@
         android:layout_height="wrap_content"
         android:layout_weight="1.1"
         android:ellipsize="end"
-        android:layout_gravity="center_vertical"
         android:ems="10"
+        android:layout_gravity="center_vertical"
         android:text="@string/txtTask"
         android:textColor="@color/black"
         android:textSize="16sp" />
 
-    <TextView
-        android:id="@+id/tvStatus"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_vertical"
+        android:orientation="vertical"
         android:layout_weight="1.9"
-        android:text="@string/txtStatusNotCompleted"
-        android:textColor="@color/red"
-        android:textSize="16sp"
-        tools:ignore="TextContrastCheck" />
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/tvStatus"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/txtStatusNotCompleted"
+            android:textColor="@color/red"
+            android:textSize="16sp"
+            tools:ignore="TextContrastCheck" />
+
+        <TextView
+            android:id="@+id/tvDate"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="@string/datePlaceHolder" />
+
+    </LinearLayout>
+
 
     <Button
         android:id="@+id/btnDelete"
         android:layout_width="30dp"
         android:layout_height="30dp"
-        android:layout_gravity="end"
+        android:layout_gravity="center_vertical"
         android:background="@drawable/ic_delete"
         tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck"
         android:contentDescription="@string/btnDelete" />
