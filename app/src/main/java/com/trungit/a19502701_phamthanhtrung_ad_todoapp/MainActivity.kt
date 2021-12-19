@@ -1,6 +1,5 @@
 package com.trungit.a19502701_phamthanhtrung_ad_todoapp
 
-import android.annotation.SuppressLint
 import android.app.DatePickerDialog
 import android.os.Bundle
 import android.widget.EditText
@@ -8,10 +7,7 @@ import android.widget.ListView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.DialogFragment
 import com.google.android.material.floatingactionbutton.FloatingActionButton
-import com.google.firebase.database.DataSnapshot
-import com.google.firebase.database.DatabaseError
-import com.google.firebase.database.DatabaseReference
-import com.google.firebase.database.ValueEventListener
+import com.google.firebase.database.*
 import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
 import com.trungit.a19502701_phamthanhtrung_ad_todoapp.fragment.AddTaskDialog
@@ -22,6 +18,7 @@ import com.trungit.a19502701_phamthanhtrung_ad_todoapp.model.Task
 import com.trungit.a19502701_phamthanhtrung_ad_todoapp.model.TaskAdapter
 import com.trungit.a19502701_phamthanhtrung_ad_todoapp.model.TaskAdapter.UpdateAndDelete
 import com.trungit.a19502701_phamthanhtrung_ad_todoapp.model.ToDo
+import com.trungit.a19502701_phamthanhtrung_ad_todoapp.util.Utilities.onSnack
 import com.trungit.a19502701_phamthanhtrung_ad_todoapp.util.Utilities.toast
 import java.util.*
 
@@ -52,6 +49,7 @@ class MainActivity: AppCompatActivity(),
         toDoList = mutableListOf()
         taskAdapter = TaskAdapter(this, toDoList)
         lvTask.adapter = taskAdapter
+
         database.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
                 toDoList.clear()
@@ -67,7 +65,6 @@ class MainActivity: AppCompatActivity(),
     private fun showDialogAddTask() {
         val dialog = AddTaskDialog()
         dialog.show(supportFragmentManager, "AddItemTag")
-
     }
 
     override fun onDialogPositiveClick(dialog: DialogFragment) {
@@ -113,7 +110,6 @@ class MainActivity: AppCompatActivity(),
         }
     }
 
-    @SuppressLint("NewApi")
     private fun pickDateAndAddNewTask(
         itemUID: String,
         txtDescTask: String
@@ -125,22 +121,29 @@ class MainActivity: AppCompatActivity(),
 
         DatePickerDialog(
             this@MainActivity, {
-                _, year, month, dayOfMonth ->
-            val dateString = String.format(
-                "%02d/%02d/%04d",
-                dayOfMonth,
-                month + 1,
-                year
-            )
+                    _, year, month, dayOfMonth ->
+                if (dayOfMonth >= y && month >= m && year >= y) {
+                    val dateString = String.format(
+                        "%02d/%02d/%04d",
+                        dayOfMonth,
+                        month + 1,
+                        year
+                    )
 
-            val newTask = Task(txtDescTask, false, dateString)
-            database
-                .child(dbKey)
-                .child(itemUID)
-                .setValue(newTask)
+                    val newTask = Task(txtDescTask, false, dateString)
+                    database
+                        .child(dbKey)
+                        .child(itemUID)
+                        .setValue(newTask)
 
-            toast(this, getString(R.string.txtSaveSuccess))
-        }, y, m, d).show()
+                    toast(this@MainActivity, getString(R.string.txtSaveSuccess))
+                } else {
+                    onSnack(
+                        this.findViewById(R.id.toDoListView),
+                        getString(R.string.setTimeError)
+                    )
+                }
+            }, y, m, d).show()
     }
 
     private fun addItemToList(snapshot : DataSnapshot){
@@ -189,35 +192,52 @@ class MainActivity: AppCompatActivity(),
         DatePickerDialog(
             this@MainActivity, {
                     _, year, month, dayOfMonth ->
-                val dateString = String.format(
-                    "%02d/%02d/%04d",
-                    dayOfMonth,
-                    month + 1,
-                    year
-                )
+                if (dayOfMonth >= y && month >= m && year >= y) {
+                    val dateString = String.format(
+                        "%02d/%02d/%04d",
+                        dayOfMonth,
+                        month + 1,
+                        year
+                    )
 
-                database
-                    .child(dbKey)
-                    .child(itemUID)
-                    .child("dateString")
-                    .setValue(dateString)
+                    database
+                        .child(dbKey)
+                        .child(itemUID)
+                        .child("dateString")
+                        .setValue(dateString)
 
-                toast(this, getString(R.string.txtSaveSuccess))
+                    toast(this@MainActivity, getString(R.string.txtSaveSuccess))
+                } else {
+                    onSnack(
+                        this.findViewById(R.id.toDoListView),
+                        getString(R.string.setTimeError)
+                    )
+                }
+
             }, y, m, d).show()
     }
 
     override fun posBtnClick(dialog: DialogFragment) {
-        val txtEt = dialog.requireDialog().findViewById<EditText>(R.id.etEditTask).text
-        database
-            .child(dbKey)
-            .child(uid)
-            .child("descTask")
-            .setValue(txtEt.toString())
+        val txtEt = dialog
+            .requireDialog()
+            .findViewById<EditText>(R.id.etEditTask)
+            .text
 
-        toast(this, getString(R.string.txtSaveSuccess))
+        if (txtEt.toString() != "") {
+            database
+                .child(dbKey)
+                .child(uid)
+                .child("descTask")
+                .setValue(txtEt.toString())
+
+            toast(this@MainActivity, getString(R.string.txtSaveSuccess))
+        } else {
+            toast(this@MainActivity, getString(R.string.txtSaveEmpty))
+        }
+
     }
 
     override fun negBtnClick(dialog: DialogFragment) {
-        toast(this, getString(R.string.txtCancel))
+        toast(this@MainActivity, getString(R.string.txtCancel))
     }
 }

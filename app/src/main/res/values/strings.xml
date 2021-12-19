@@ -23,7 +23,7 @@
     <string name="datePlaceHolder">--/--/----</string>
     <string name="setDate">Set deadline</string>
     <string name="txtDeadline">Deadline:</string>
-    <string name="setTimeError">Cannot set time before now</string>
+    <string name="setTimeError">Cannot select date before current date</string>
     <string name="markCompleted">Task has been marked as completed</string>
     <string name="markNotCompleted">Task has been marked as not completed</string>
 </resources>
